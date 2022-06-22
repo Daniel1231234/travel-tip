@@ -41,19 +41,20 @@ function onGetLocs() {
     .getLocs()
     .then((locs) => {
       const strHTMLS = locs.map((loc) => {
-        return `<ul>
-            <li>${loc.name}</li>
-            <button type="button" class="btn-delete" onclick="onDeleteLoc(${
-              loc.id
-            })">Delete </button>
-            <button onclick="onPanTo(${
-              (loc.lat, loc.lng)
-            })" class="btn-pan">Go</button>
-            </ul>
+        return `
+             <tr>
+                    <td class="name">${loc.name}</td>
+                    <td class="create-time">${loc.createdAt}</td>
+                    <td class="update-time">${loc.updatedAt}</td>
+                    <td class="actions">
+                        <button type="button" class="btn-delete" onclick="onDeleteLoc(${loc.id})">Delete</button>
+                        <button onclick="onPanTo(${loc.pos.lat}, ${loc.pos.lng})" class="btn-pan">Go</button>
+                    </td>
+             </tr>
             `
       })
       console.log("Locations:", locs)
-      document.querySelector(".locs").innerText = strHTMLS.join("")
+      document.querySelector("tbody").innerHTML = strHTMLS.join("")
       // document.querySelector(".locs").innerText = JSON.stringify(locs)
     })
     .catch((err) => {
