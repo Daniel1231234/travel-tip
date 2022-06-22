@@ -1,4 +1,5 @@
-// import { storageService } from "./services/storage-service.js"
+import { storageService } from "./storage-service.js"
+
 export const locService = {
   getLocs,
   createLoc,
@@ -19,8 +20,9 @@ function createLoc(name, pos) {
   }
 }
 
-function getLocs() {
-  const locs = loadFromStorage(gLocations) || []
+// function getLocs() {
+function getLocs(pos) {
+  gLocations = storageService.load(gLocations) || []
 }
 
 // const locs = [
