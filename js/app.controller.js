@@ -29,11 +29,36 @@ function onAddMarker() {
   mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
 }
 
+// function onGetLocs() {
+//   locService.getLocs().then((locs) => {
+//     console.log("Locations:", locs)
+//     document.querySelector(".locs").innerText = JSON.stringify(locs)
+//   })
+// }
+
 function onGetLocs() {
-  locService.getLocs().then((locs) => {
-    console.log("Locations:", locs)
-    document.querySelector(".locs").innerText = JSON.stringify(locs)
-  })
+  locService
+    .getLocs()
+    .then((locs) => {
+      const strHTMLS = locs.map((loc) => {
+        return `<ul>
+            <li>${loc.name}</li>
+            <button type="button" class="btn-delete" onclick="onDeleteLoc(${
+              loc.id
+            })">Delete </button>
+            <button onclick="onPanTo(${
+              (loc.lat, loc.lng)
+            })" class="btn-pan">Go</button>
+            </ul>
+            `
+      })
+      console.log("Locations:", locs)
+      document.querySelector(".locs").innerText = strHTMLS.join("")
+      // document.querySelector(".locs").innerText = JSON.stringify(locs)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 function onGetUserPos() {
