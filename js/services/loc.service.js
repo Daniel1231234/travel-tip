@@ -3,10 +3,12 @@ import { storageService } from "./storage-service.js"
 export const locService = {
   getLocs,
   createLoc,
+  setLoc,
 }
 
+const LOCS_KEY = "locsDB"
 var gId = 1
-var gLocations
+var gLocations = storageService.load(LOCS_KEY) || []
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
 function createLoc({ lat, lng }) {
@@ -22,10 +24,15 @@ function createLoc({ lat, lng }) {
   return loc
 }
 
+function setLoc(loc) {
+  gLocations.push(loc)
+  storageService.save(LOCS_KEY, gLocations)
+  console.log(gLocations)
+}
+
 // function getLocs() {
 function getLocs() {
-  new Promise((resolved, rejected) => {})
-  gLocations = storageService.load(gLocations) || []
+  return new Promise((resolve) => resolve(gLocations))
 }
 
 // const locs = [
