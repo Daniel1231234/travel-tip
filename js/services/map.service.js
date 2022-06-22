@@ -27,7 +27,8 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 }
 
 function saveLoc(pos) {
-  const loc = locService.createLoc(pos)
+  const locName = prompt("Place name?")
+  const loc = locService.createLoc(pos, locName)
   console.log(loc)
   locService.setLoc(loc)
   addMarker(pos, loc)
