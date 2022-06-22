@@ -1,4 +1,5 @@
 import { storageService } from "./storage-service.js"
+import { utilService } from "./util-service.js"
 
 export const locService = {
   getLocs,
@@ -7,17 +8,17 @@ export const locService = {
 }
 
 const LOCS_KEY = "locsDB"
-var gId = 1
+
 var gLocations = storageService.load(LOCS_KEY) || []
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
 function createLoc({ lat, lng }) {
   const loc = {
-    id: gId++,
+    id: utilService.makeId(),
     name: prompt("Place name?"),
     pos: { lat, lng },
     weather: "",
-    createdAt: Date.now(),
+    createdAt: utilService.getTime(),
     updatedAt: 0,
   }
   console.log(loc)

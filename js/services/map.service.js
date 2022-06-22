@@ -4,6 +4,7 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
+  getMap,
 }
 
 var gMap
@@ -18,16 +19,16 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     })
     console.log("Map!", gMap)
     //////
-    gMap.addListener("click", ({latLng: {lat,lng}}) => {
+    gMap.addListener("click", ({ latLng: { lat, lng } }) => {
       const position = { lat: lat(), lng: lng() }
       saveLoc(position)
     })
   })
 }
 
-function saveLoc(pos){
+function saveLoc(pos) {
   const loc = locService.createLoc(pos)
-  console.log(loc);
+  console.log(loc)
   locService.setLoc(loc)
   addMarker(pos, loc)
 }
@@ -70,4 +71,8 @@ function _connectGoogleApi() {
     elGoogleApi.onload = resolve
     elGoogleApi.onerror = () => reject("Google script failed to load")
   })
+}
+
+function getMap() {
+  return gMap
 }
