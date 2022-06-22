@@ -12,54 +12,44 @@
     <header class="main-header main-layout">
         <div class="header-content main-layout flex align-center space-between">
             <div class="main-logo">Travel-Tip</div>
-            <form class="search flex">
-                <input type="search" placeholder="Search Place" />
-                <button>Find place</button>
-            </form>
+            <div class="header-controls flex">
+                <button onclick="onGetUserPos()" class="btn-user-pos">My location</button>
+                <button onclick="onGetLocs()" class="btn-get-locs">Show Locations</button>
+                <form class="search flex">
+                    <input type="search" placeholder="Search Place" />
+                    <button>Find place</button>
+                </form>        
+            </div>
         </div>
     </header>
 
     <!-- <h1>Travel-Tip</h1> -->
-    <section class="info-container flex">
-        <div class="locs">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Place name</th>
-                        <th>Create time </th>
-                        <th>Updated time </th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody> </tbody>
-            </table>
-        </div>    
-    </section>
+    <main class="main-content main-layout flex">
+        <section class="info-container flex">
+            <div class="locs">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Place name</th>
+                            <th>Create time </th>
+                            <th>Updated time </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody> </tbody>
+                </table>
+            </div>    
+        </section>
 
-    <section id="map" class="map-container flex" style1="width: 100%; height: 400px;"></section>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">My location</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
+        <section id="map" class="map-container flex" style1="width: 100%; height: 400px;"></section>
+    </main>
+        <!-- <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button> -->
+        <!-- <button onclick="onGetUserPos()" class="btn-user-pos">My location</button>
+        <button onclick="onGetLocs()" class="btn-get-locs">Show Locations</button> -->
+        <!-- <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button> -->
 
-    <p>You are at: <span class="user-pos"></span></p>
+        <!-- <p>You are at: <span class="user-pos"></span></p> -->
     <!-- <p>Locations: <span class="locs"></span></p> -->
-<<<<<<< HEAD
-    <div class="locs">
-        <table>
-            <thead>
-                <tr>
-                    <th>Place name</th>
-                    <th>Create time </th>
-                    <th>Updated time </th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody> </tbody>
-        </table>
-    </div>
-=======
->>>>>>> 8c3a4c07e2022daee6e313d7070bfe1b413790a2
 
     <script src="./lib/axios.js"></script>
     <script type="module" src="js/app.controller.js"></script>

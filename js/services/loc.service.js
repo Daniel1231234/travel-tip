@@ -1,5 +1,6 @@
 import { storageService } from "./storage-service.js"
 import { utilService } from "./util-service.js"
+// import { mapService } from "./map.service.js"
 
 export const locService = {
   getLocs,
@@ -10,17 +11,18 @@ export const locService = {
 
 const LOCS_KEY = "locsDB"
 
-var gLocations = storageService.load(LOCS_KEY) || []
+// var gLocations = storageService.load(LOCS_KEY) || []
+var gLocations = storageService.load(LOCS_KEY) || [createLoc({ lat: 21.315603, lng: -157.858093 })]
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
-function createLoc({ lat, lng }) {
+function createLoc({ lat, lng }, name = 'My place') {
   const loc = {
     id: utilService.makeId(),
-    name: prompt("Place name?"),
+    name,
     pos: { lat, lng },
     weather: "",
     createdAt: utilService.getTime(),
-    updatedAt: 0,
+    updatedAt: utilService.getTime(),
   }
   console.log(loc)
   return loc

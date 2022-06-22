@@ -90,6 +90,9 @@ function onPanTo(lat, lng) {
   mapService.panTo(lat, lng)
 }
 
+// https://daniel1231234.github.io/travel-tip/
+
+
 // function renderLocation() {
 //   // console.log("fdfd");
 // }
