@@ -5,6 +5,7 @@ export const locService = {
   getLocs,
   createLoc,
   setLoc,
+  deleteLoc,
 }
 
 const LOCS_KEY = "locsDB"
@@ -34,6 +35,11 @@ function setLoc(loc) {
 // function getLocs() {
 function getLocs() {
   return new Promise((resolve) => resolve(gLocations))
+}
+
+function deleteLoc(id){
+  const idx = gLocations.findIndex(loc => loc.id === id)
+  gLocations.splice(idx, 1)
 }
 
 // const locs = [

@@ -6,6 +6,8 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onDeleteLoc = onDeleteLoc
+window.onPanTo = onPanTo
 
 function onInit() {
   mapService
@@ -41,6 +43,7 @@ function onGetLocs() {
     .getLocs()
     .then((locs) => {
       const strHTMLS = locs.map((loc) => {
+        console.log(loc);
         return `
              <tr>
                     <td class="name">${loc.name}</td>
@@ -77,9 +80,14 @@ function onGetUserPos() {
     })
 }
 
-function onPanTo() {
-  console.log("Panning the Map")
-  mapService.panTo(35.6895, 139.6917)
+function onDeleteLoc(id){
+    locService.deleteLoc(id)
+    onGetLocs()
+}
+
+function onPanTo(lat, lng) {
+  console.log("Panning the Map",lat, lng)
+  mapService.panTo(lat, lng)
 }
 
 // function renderLocation() {
