@@ -19,12 +19,12 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log("Map!", gMap)
     //////
     gMap.addListener("click", (ev) => {
-      new google.maps.Marker({
-        position: ev.latLng,
-      })
-      const latlng = JSON.stringify(ev.latLng.toJSON(), null, 2)
-      console.log(latlng)
-      locService.createLoc("Greatplace", latlng)
+      // new google.maps.Marker({
+      //   position: ev.latLng,
+      // })
+      let location = ev.latLng
+      const position = { lat: location.lat(), lng: location.lng() }
+      locService.createLoc(position)
     })
   })
 }
