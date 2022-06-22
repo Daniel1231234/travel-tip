@@ -10,7 +10,7 @@ var gLocations
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
 function createLoc(Pos) {
-  return {
+  const x = {
     id: gId++,
     name: prompt("Place name?"),
     pos: { lat, lng },
@@ -18,6 +18,7 @@ function createLoc(Pos) {
     createdAt: Date.now(),
     updatedAt: 0,
   }
+  return x
 }
 
 // function getLocs() {
