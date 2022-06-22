@@ -19,6 +19,7 @@ function createLoc({lat, lng}) {
     // updatedAt,
   }
   console.log(x)
+  return x
 }
 
 // function getLocs() {

@@ -18,23 +18,27 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     })
     console.log("Map!", gMap)
     //////
-    gMap.addListener("click", (ev) => {
-      const location = ev.latLng
-
-      const position = { lat: location.lat(), lng: location.lng() }
-      const place = locService.createLoc(position)
-      addMarker(position)
-
-
+    gMap.addListener("click", ({latLng: {lat,lng}}) => {
+      const position = { lat: lat(), lng: lng() }
+      savePos(position)
+      // const place = locService.createLoc(position)
+      // addMarker(position)
     })
   })
 }
 
-function addMarker(loc) {
+function savePos(pos){
+  const place = locService.createLoc(pos)
+  console.log(place);
+  // addPlace(place)
+  addMarker(pos, place.name)
+}
+
+function addMarker(loc, name) {
   var marker = new google.maps.Marker({
     position: loc,
     map: gMap,
-    title: "Hello World!",
+    title: name,
   })
   return marker
 }
