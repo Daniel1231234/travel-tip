@@ -1,0 +1,40 @@
+@import 'basic/base.css';
+@import 'basic/layout.css';
+@import 'basic/helpers.css';
+/* @import 'setup/typography.css'; */
+/* @import 'setup/mq.css'; */
+
+
+.main-header {
+    min-height: 50px;
+    margin-bottom: 1em;
+}
+.main-header .header-content {
+    margin: 0;
+    height: 100%;
+    padding: 1em 0;
+}
+
+.main-header .main-logo {
+    font-size: 2em;
+    cursor: pointer;
+    color: rgb(50, 50, 50);
+}
+
+.search input {
+    color: rgb(222, 222, 222);
+}
+
+.info-container {
+    flex-basis: 45%;
+    /* background-color: antiquewhite; */
+    flex-direction: column;
+}
+
+.map-container {
+    flex-basis: 55%;
+    width: 50%;
+    height: 400px;
+    /* background-color: rgb(178, 108, 17); */
+    flex-direction: column;
+}
