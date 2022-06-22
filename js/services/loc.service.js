@@ -9,15 +9,16 @@ var gId = 1
 var gLocations
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
-function createLoc(name, pos) {
-  return {
+function createLoc(pos) {
+  const x = {
     id: gId++,
     name: prompt("Place name?"),
     pos: { lat, lng },
-    weather,
+    // weather,
     createdAt: Date.now(),
-    updatedAt,
+    // updatedAt,
   }
+  console.log(x)
 }
 
 // function getLocs() {

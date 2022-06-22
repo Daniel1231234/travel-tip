@@ -22,9 +22,12 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
       new google.maps.Marker({
         position: ev.latLng,
       })
-      const latlng = JSON.stringify(ev.latLng.toJSON(), null, 2)
-      console.log(latlng)
-      locService.createLoc("Greatplace", latlng)
+      //   const latlng = JSON.stringify(ev.latLng.toJSON(), null, 2)
+      //   const y = JSON.parse(latlng)
+      //   console.log(y)
+      const pos = { lat: location.lat(), lng: location.lng() }
+      console.log(pos)
+      locService.createLoc(latlng)
     })
   })
 }
