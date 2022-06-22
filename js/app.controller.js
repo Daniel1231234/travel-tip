@@ -16,7 +16,20 @@ function onInit() {
       console.log("Map is ready")
     })
     .catch(() => console.log("Error: cannot init map"))
+
+  document.querySelector(".search").addEventListener("submit", onSearchLocs)
 }
+
+function onSearchLocs(ev) {
+  ev.preventDefault()
+
+  const elInput = document.querySelector(".search input")
+}
+
+//   loadVideosData(elInput.value).then(renderVideoCards)
+//
+//   elInput.value = ""
+// }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
@@ -31,19 +44,12 @@ function onAddMarker() {
   mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
 }
 
-// function onGetLocs() {
-//   locService.getLocs().then((locs) => {
-//     console.log("Locations:", locs)
-//     document.querySelector(".locs").innerText = JSON.stringify(locs)
-//   })
-// }
-
 function onGetLocs() {
   locService
     .getLocs()
     .then((locs) => {
       const strHTMLS = locs.map((loc) => {
-        console.log(loc);
+        console.log(loc)
         return `
              <tr>
                     <td class="name">${loc.name}</td>
@@ -80,13 +86,13 @@ function onGetUserPos() {
     })
 }
 
-function onDeleteLoc(id){
-    locService.deleteLoc(id)
-    onGetLocs()
+function onDeleteLoc(id) {
+  locService.deleteLoc(id)
+  onGetLocs()
 }
 
 function onPanTo(lat, lng) {
-  console.log("Panning the Map",lat, lng)
+  console.log("Panning the Map", lat, lng)
   mapService.panTo(lat, lng)
 }
 
