@@ -9,20 +9,20 @@ var gId = 1
 var gLocations
 // const locs = [{ id: 1, name: "Greatplace", lat: 32.047104, lng: 34.832384 }]
 
-function createLoc(pos) {
-  const x = {
+function createLoc(Pos) {
+  return {
     id: gId++,
     name: prompt("Place name?"),
     pos: { lat, lng },
-    // weather,
+    weather: "",
     createdAt: Date.now(),
-    // updatedAt,
+    updatedAt: 0,
   }
-  console.log(x)
 }
 
 // function getLocs() {
-function getLocs(pos) {
+function getLocs() {
+  new Promise(resolve)
   gLocations = storageService.load(gLocations) || []
 }
 
