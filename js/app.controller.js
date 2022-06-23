@@ -22,14 +22,11 @@ function onInit() {
 
 function onSearchLocs(ev) {
   ev.preventDefault()
-
   const elInput = document.querySelector(".search input")
-}
+  mapService.searchLocs(elInput.value).then(onPanTo)
 
-//   loadVideosData(elInput.value).then(renderVideoCards)
-//
-//   elInput.value = ""
-// }
+  elInput.value = ""
+}
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
@@ -64,7 +61,6 @@ function onGetLocs() {
       })
       console.log("Locations:", locs)
       document.querySelector("tbody").innerHTML = strHTMLS.join("")
-      // document.querySelector(".locs").innerText = JSON.stringify(locs)
     })
     .catch((err) => {
       console.log(err)
@@ -95,10 +91,3 @@ function onPanTo(lat, lng) {
   console.log("Panning the Map", lat, lng)
   mapService.panTo(lat, lng)
 }
-
-// https://daniel1231234.github.io/travel-tip/
-
-
-// function renderLocation() {
-//   // console.log("fdfd");
-// }

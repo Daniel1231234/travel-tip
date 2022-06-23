@@ -5,19 +5,21 @@ export const mapService = {
   addMarker,
   panTo,
   getMap,
+  searchLocs,
 }
 
 var gMap
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-  console.log("InitMap")
+  //   console.log("InitMap")
   return _connectGoogleApi().then(() => {
-    console.log("google available")
+    // console.log("google available")
     gMap = new google.maps.Map(document.querySelector("#map"), {
       center: { lat, lng },
       zoom: 15,
     })
-    console.log("Map!", gMap)
+    // console.log("Map!", gMap)
+
     //////
     gMap.addListener("click", ({ latLng: { lat, lng } }) => {
       const position = { lat: lat(), lng: lng() }
@@ -76,4 +78,12 @@ function _connectGoogleApi() {
 
 function getMap() {
   return gMap
+}
+
+function searchLocs(val) {
+  return axios
+    .get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${val}&key=AIzaSyAjlgFK0ZA3bPcJwKGVSJMLO7JCNku_VRI`
+    )
+    .then(({ data }) => data.results[0].geometry.location)
 }
